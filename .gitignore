@@ -62,3 +62,5 @@ UserSettings
 .vsconfig
 Assets/Git
 Assets/Git.meta
+Assets/_TerrainAutoUpgrade
+Assets/_TerrainAutoUpgrade.meta

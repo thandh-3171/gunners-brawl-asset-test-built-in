@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Git/fow-3d-dlc/_/Level3D/Scene/Level3D.unity
+    guid: e92d48717eb211b4491cd1b37e8580d6
+  - enabled: 1
+    path: Assets/Git/fow-2d-dlc/_/Level2D/Scenes/Level2D.unity
+    guid: 2f43874a2fded154480567db6ee69bb8
   m_configObjects: {}
