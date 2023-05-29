@@ -76,6 +76,9 @@ public class MakingBattleMap : MonoBehaviour
         List<Light> lights = GetComponentsInChildren<Light>().ToList();
         for (int i = 0; i < lights.Count; i++) DestroyImmediate(lights[i]);
         lights.Clear();
+        List<ParticleSystem> particles = GetComponentsInChildren<ParticleSystem>().ToList();
+        for (int i = 0; i < particles.Count; i++) DestroyImmediate(particles[i].gameObject);
+        particles.Clear();
     }
     [ContextMenu("ShowAllMeshVision")]
     private void ShowAllMeshVision()
