@@ -188,34 +188,34 @@ namespace UnityStandardAssets.Water
         // This just sets up some matrices in the material; for really
         // old cards to make water texture scroll.
         // Don't use it. I hate it.
-        //void Update()
-        //{
-        //    if (!GetComponent<Renderer>())
-        //    {
-        //        return;
-        //    }
-        //    Material mat = GetComponent<Renderer>().sharedMaterial;
-        //    if (!mat)
-        //    {
-        //        return;
-        //    }
+        void Update()
+        {
+            if (!GetComponent<Renderer>())
+            {
+                return;
+            }
+            Material mat = GetComponent<Renderer>().sharedMaterial;
+            if (!mat)
+            {
+                return;
+            }
 
-        //    Vector4 waveSpeed = mat.GetVector("WaveSpeed");
-        //    float waveScale = mat.GetFloat("_WaveScale");
-        //    Vector4 waveScale4 = new Vector4(waveScale, waveScale, waveScale * 0.4f, waveScale * 0.45f);
+            Vector4 waveSpeed = mat.GetVector("WaveSpeed");
+            float waveScale = mat.GetFloat("_WaveScale");
+            Vector4 waveScale4 = new Vector4(waveScale, waveScale, waveScale * 0.4f, waveScale * 0.45f);
 
-        //    // Time since level load, and do intermediate calculations with doubles
-        //    double t = Time.timeSinceLevelLoad / 20.0;
-        //    Vector4 offsetClamped = new Vector4(
-        //        (float)Math.IEEERemainder(waveSpeed.x * waveScale4.x * t, 1.0),
-        //        (float)Math.IEEERemainder(waveSpeed.y * waveScale4.y * t, 1.0),
-        //        (float)Math.IEEERemainder(waveSpeed.z * waveScale4.z * t, 1.0),
-        //        (float)Math.IEEERemainder(waveSpeed.w * waveScale4.w * t, 1.0)
-        //        );
+            // Time since level load, and do intermediate calculations with doubles
+            double t = Time.timeSinceLevelLoad / 20.0;
+            Vector4 offsetClamped = new Vector4(
+                (float)Math.IEEERemainder(waveSpeed.x * waveScale4.x * t, 1.0),
+                (float)Math.IEEERemainder(waveSpeed.y * waveScale4.y * t, 1.0),
+                (float)Math.IEEERemainder(waveSpeed.z * waveScale4.z * t, 1.0),
+                (float)Math.IEEERemainder(waveSpeed.w * waveScale4.w * t, 1.0)
+                );
 
-        //    mat.SetVector("_WaveOffset", offsetClamped);
-        //    mat.SetVector("_WaveScale4", waveScale4);
-        //}
+            mat.SetVector("_WaveOffset", offsetClamped);
+            mat.SetVector("_WaveScale4", waveScale4);
+        }
 
         void UpdateCameraModes(Camera src, Camera dest)
         {
@@ -374,19 +374,19 @@ namespace UnityStandardAssets.Water
         static void CalculateReflectionMatrix(ref Matrix4x4 reflectionMat, Vector4 plane)
         {
             reflectionMat.m00 = (1F - 2F * plane[0] * plane[0]);
-            reflectionMat.m01 = (- 2F * plane[0] * plane[1]);
-            reflectionMat.m02 = (- 2F * plane[0] * plane[2]);
-            reflectionMat.m03 = (- 2F * plane[3] * plane[0]);
+            reflectionMat.m01 = (-2F * plane[0] * plane[1]);
+            reflectionMat.m02 = (-2F * plane[0] * plane[2]);
+            reflectionMat.m03 = (-2F * plane[3] * plane[0]);
 
-            reflectionMat.m10 = (- 2F * plane[1] * plane[0]);
+            reflectionMat.m10 = (-2F * plane[1] * plane[0]);
             reflectionMat.m11 = (1F - 2F * plane[1] * plane[1]);
-            reflectionMat.m12 = (- 2F * plane[1] * plane[2]);
-            reflectionMat.m13 = (- 2F * plane[3] * plane[1]);
+            reflectionMat.m12 = (-2F * plane[1] * plane[2]);
+            reflectionMat.m13 = (-2F * plane[3] * plane[1]);
 
-            reflectionMat.m20 = (- 2F * plane[2] * plane[0]);
-            reflectionMat.m21 = (- 2F * plane[2] * plane[1]);
+            reflectionMat.m20 = (-2F * plane[2] * plane[0]);
+            reflectionMat.m21 = (-2F * plane[2] * plane[1]);
             reflectionMat.m22 = (1F - 2F * plane[2] * plane[2]);
-            reflectionMat.m23 = (- 2F * plane[3] * plane[2]);
+            reflectionMat.m23 = (-2F * plane[3] * plane[2]);
 
             reflectionMat.m30 = 0F;
             reflectionMat.m31 = 0F;
